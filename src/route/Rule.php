@@ -67,10 +67,16 @@ abstract class Rule extends Annotation
      */
     public $append;
 
+    /**
+     * 路由标识
+     * @var string
+     */
+    public $name;
+
     public function getOptions()
     {
         return array_intersect_key(get_object_vars($this), array_flip([
-            'middleware', 'ext', 'deny_ext', 'https', 'domain', 'complete_match', 'cache', 'ajax', 'pjax', 'json', 'filter', 'append',
+            'middleware', 'ext', 'deny_ext', 'https', 'domain', 'complete_match', 'cache', 'ajax', 'pjax', 'json', 'filter', 'append'
         ]));
     }
 

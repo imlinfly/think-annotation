@@ -52,10 +52,10 @@ trait InteractsWithRoute
     protected function scanDir($dir)
     {
         foreach (ClassMapGenerator::createMap($dir) as $class => $path) {
-            $refClass        = new ReflectionClass($class);
-            $routeGroup      = false;
+            $refClass = new ReflectionClass($class);
+            $routeGroup = false;
             $routeMiddleware = [];
-            $callback        = null;
+            $callback = null;
 
             //类
             /** @var Resource $resource */
@@ -68,7 +68,7 @@ trait InteractsWithRoute
             }
 
             if ($middleware = $this->reader->getClassAnnotation($refClass, Middleware::class)) {
-                $routeGroup      = '';
+                $routeGroup = '';
                 $routeMiddleware = $middleware->value;
             }
 
@@ -96,9 +96,12 @@ trait InteractsWithRoute
 
                 /** @var Route $route */
                 if ($route = $this->reader->getMethodAnnotation($refMethod, Route::class)) {
-
                     //注册路由
                     $rule = $routeGroup->addRule($route->value, "{$class}@{$refMethod->getName()}", $route->method);
+
+                    if ($route->name) {
+                        $rule->name($route->name);
+                    }
 
                     $rule->option($route->getOptions());
 
