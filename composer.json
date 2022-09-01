@@ -1,0 +1,35 @@
+{
+  "name": "linfcom/think-annotation",
+  "description": "In order to test yourself, please don't download it.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "linfly",
+      "email": "fly@eyabc.cn"
+    }
+  ],
+  "require": {
+    "topthink/framework": "^6.0",
+    "doctrine/annotations": "1.10.3",
+    "php-di/phpdoc-reader": "^2.1",
+    "symfony/class-loader": "~3.2.0"
+  },
+  "require-dev": {
+    "topthink/think-ide-helper": "v1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "think\\annotation\\": "src"
+    }
+  },
+  "extra": {
+    "think": {
+      "services": [
+        "think\\annotation\\Service"
+      ],
+      "config": {
+        "annotation": "src/config.php"
+      }
+    }
+  }
+}
