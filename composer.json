@@ -8,6 +8,7 @@
       "email": "fly@eyabc.cn"
     }
   ],
+  "minimum-stability": "dev",
   "require": {
     "topthink/framework": "^6.0",
     "doctrine/annotations": "1.10.3",
