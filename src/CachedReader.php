@@ -31,8 +31,8 @@ class CachedReader implements Reader
     public function __construct(Reader $reader, CacheInterface $cache, $debug = false)
     {
         $this->delegate = $reader;
-        $this->cache    = $cache;
-        $this->debug    = $debug;
+        $this->cache = $cache;
+        $this->debug = $debug;
     }
 
     /**
@@ -73,7 +73,7 @@ class CachedReader implements Reader
      */
     public function getPropertyAnnotations(\ReflectionProperty $property)
     {
-        $class    = $property->getDeclaringClass();
+        $class = $property->getDeclaringClass();
         $cacheKey = $class->getName() . '$' . $property->getName();
 
         if (isset($this->loadedAnnotations[$cacheKey])) {
@@ -107,7 +107,7 @@ class CachedReader implements Reader
      */
     public function getMethodAnnotations(\ReflectionMethod $method)
     {
-        $class    = $method->getDeclaringClass();
+        $class = $method->getDeclaringClass();
         $cacheKey = $class->getName() . '#' . $method->getName();
 
         if (isset($this->loadedAnnotations[$cacheKey])) {
@@ -133,7 +133,7 @@ class CachedReader implements Reader
             }
         }
 
-        return null;
+        return [];
     }
 
     public function clearLoadedAnnotations()
@@ -170,7 +170,7 @@ class CachedReader implements Reader
     private function getLastModification(ReflectionClass $class)
     {
         $filename = $class->getFileName();
-        $parent   = $class->getParentClass();
+        $parent = $class->getParentClass();
 
         return max(array_merge(
             [$filename ? filemtime($filename) : 0],

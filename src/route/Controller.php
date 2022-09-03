@@ -10,7 +10,7 @@ use Doctrine\Common\Annotations\Annotation;
  * @Annotation
  * @Target({"CLASS","METHOD"})
  */
-final class Group extends Rule
+final class Controller extends Rule
 {
 
 }
